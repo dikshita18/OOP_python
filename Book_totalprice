@@ -26,7 +26,7 @@ class Book:
         print("No of copies : ", self.n_copies)
         
 
-#Calling the objects
+#Calling the functions
 obj = Book()
 obj.accept_input()
 obj.details()
