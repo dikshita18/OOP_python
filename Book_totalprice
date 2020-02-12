@@ -1,0 +1,33 @@
+#Program to calculate total price of book based on given inputs
+
+#Defining class book
+class Book:
+
+     #Accepting input from the user
+    def accept_input(self): 
+
+        self.name = str(input("Enter name of Book: "))
+        self.author = str(input("Enter author of Book: "))
+        self.price = float(input("Enter price of Book: "))
+        self.n_copies = int(input("Enter no of copies to purchase Book: "))
+        
+    #Calculating total price of books purchased
+    def total_price(self):                       
+
+        t = self.price * self.n_copies
+        print("Total Price : ",t)
+
+    def details(self):
+
+        print("Purcashe Details".center(70, "-"))
+        print("Name of Book : ", self.name)
+        print("Author of Book : ", self.author)
+        print("Price of Book : ", self.price)
+        print("No of copies : ", self.n_copies)
+        
+
+#Calling the objects
+obj = Book()
+obj.accept_input()
+obj.details()
+obj.total_price()
