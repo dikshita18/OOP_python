@@ -69,6 +69,7 @@ class ellipse(shape):
     def calculate_perimeter(self):
         print("Perimeter of a ellipse is ",2 * 3.14 * math.sqrt((self.minorAxis ** 2 + self.majorAxis ** 2)))
 
+# Calling the functions
 obj = rectangle()
 obj.no_of_sides(10,20)
 obj.calculate_area()
