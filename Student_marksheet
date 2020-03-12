@@ -1,0 +1,199 @@
+
+# STUDENT MARKSHEET
+import math
+class Student(object):
+    
+    def __init__(self):
+            self.sname = str(input("Name: ".ljust(20)))
+            self.class_ = str(input("Class: ".ljust(20)))
+            self.div = str(input("Division: ".ljust(20)))
+            self.rno=int(input("Roll no.: ".ljust(20)))
+            
+class AcceptMarks():
+    def __init__(self):
+            self.dbms = int(input("DBMS : "))
+            self.pp = int(input("PP : "))
+            self.oop = int(input("OOP : "))
+            self.wp = int(input("WP : "))
+ 
+            
+class Result(AcceptMarks):
+    def __init__(self):
+            self.p_mark = []
+            self.t_mark = []
+
+
+            
+    def accept_p(self):
+            print("Practical".center(108,'-'))
+            print("Enter marks out of 50".center(108,'-'))
+            super(Result,self).__init__()
+            self.it = int(input("IT: "))
+           
+            self.p_mark.append(self.dbms)
+            self.p_mark.append(self.pp)
+            self.p_mark.append(self.oop)
+            self.p_mark.append(self.wp)
+            self.p_mark.append(self.it)
+                
+    def accept_t(self):
+            print("\n")
+            print("Theory".center(108,"-"))
+            print("Enter marks out of 80".center(108,'-'))
+            super(Result,self).__init__()
+            self.dm = int(input("DM : "))
+            
+            self.t_mark.append(self.dbms)
+            self.t_mark.append(self.pp)
+            self.t_mark.append(self.oop)
+            self.t_mark.append(self.wp)
+            self.t_mark.append(self.dm)
+            
+    def calculate(self):
+            
+            self.pract_total=self.p_mark[0]+self.p_mark[1]+self.p_mark[2]+self.p_mark[3]
+            self.pract_avg=self.pract_total/4
+            self.pract_perc=self.pract_total*100/200
+            
+            self.theory_total=self.t_mark[0]+self.t_mark[1]+self.t_mark[2]+self.t_mark[3]+self.t_mark[4]
+            self.theory_avg=self.theory_total/5
+            self.theory_perc=self.theory_total*100/500
+
+            
+    
+		
+class Display(Result):
+    def __init__(self):
+            Result.__init__(self)
+            Result.accept_p(self)
+            Result.accept_t(self)
+            Result.calculate(self)
+            
+    def printMarks(self):
+            print("Result".center(108,"-"))
+            print("Subject","".rjust(12),"Theory".ljust(8),"Grade".ljust(8),"GP".ljust(7),"CR".ljust(6),"Cgpa/Sgpa".ljust(10),"Practical".ljust(10),"Grade".ljust(8)," GP".ljust(5),"CR".ljust(5),"Cgpa/Sgpa")
+            lstSub = ["DBMS      ","PP        ",
+            "OOP       ","WP        ","DM/IT     "]
+            
+            for i in range(len(lstSub)):
+                    print(lstSub[i],"".rjust(10),self.t_mark[i],"".rjust(6),self.grade_theory[i],"".rjust(4),self.grade_pt[i],"".rjust(4),self.crp[i],"".rjust(5),self.cgp_t,"".rjust(10),self.p_mark[i],"".rjust(5),self.grade_prac[i],"".rjust(3),self.grade_pt2[i],"".rjust(1),self.crp2[i],"".rjust(8),self.cgp_p,"".rjust(3))
+
+            print("".center(108,"-"))                  
+            print("Total     ","".rjust(14),self.theory_total,"".rjust(38),self.pract_total)
+            print("Average   ","".rjust(14),self.theory_avg,"".rjust(36),self.pract_avg)
+            print("Percent   ","".rjust(14),self.theory_perc,"".rjust(36),self.pract_perc)
+
+#Grade
+      
+    def grade_sys(self):
+        self.grade_theory = []
+        for i in self.t_mark:
+            if i >= 80:
+                self.grade_theory.append('O ')
+            elif i >= 70 and i < 80:
+                self.grade_theory.append('A+')
+            elif i >= 60 and i < 70:
+                self.grade_theory.append('A ')
+            elif i >= 55 and i < 60:
+                self.grade_theory.append('B+')
+            elif i >= 50 and i < 55:
+                self.grade_theory.append('B ')
+            elif i >= 45 and i < 50:
+                self.grade_theory.append('C ')
+            elif i >= 40 and i < 45:
+                self.grade_theory.append('D ')
+            else:
+                self.grade_theory.append('F ')
+
+    def grade_prac(self):
+        self.grade_prac = []
+        for i in self.p_mark:
+            if i >= 40:
+                self.grade_prac.append('O ')
+            elif i >= 30:
+                self.grade_prac.append('A ')
+            elif i >= 20:
+                self.grade_prac.append('B ')
+            else:
+                self.grade_prac.append('F ')
+                
+    #Grade
+    def grade_t(self):
+        self.grade_pt = []
+        for i in self.p_mark:
+            if i >= 80:
+                self.grade_pt.append(10 )
+            elif i >= 70:
+                self.grade_pt.append(9)
+            elif i >= 60:
+                self.grade_pt.append(8 )
+            elif i >= 55:
+                self.grade_pt.append(7)
+            elif i >= 50:
+                self.grade_pt.append(6 )
+            elif i >= 45:
+                self.grade_pt.append(5 )
+            elif i >= 40:
+                self.grade_pt.append(4 )
+            else:
+                self.grade_pt.append(0 )
+
+    def grade_p(self):
+        self.grade_pt2 = []
+        for i in self.p_mark:
+            if i >= 40:
+                self.grade_pt2.append(10 )
+            elif i >= 30:
+                self.grade_pt2.append(7)
+            elif i >= 20:
+                self.grade_pt2.append(4 )
+            else:
+                self.grade_pt2.append(0 )
+
+    def crp_t(self):
+        self.crp = []
+        for i in self.t_mark:
+            if i >= 40:
+                self.crp.append(3)
+            else :
+                self.crp.append(0)
+
+    def crp_p(self):
+        self.crp2 = []
+        for i in self.p_mark:
+            if i >= 40:
+                self.crp2.append(2)
+            else :
+                self.crp2.append(0)
+
+    def cgpa_t(self):
+        self.cgpa = math.fsum(self.grade_pt)
+        self.cgp_t = self.cgpa/5
+
+
+
+    def cgpa_p(self):
+        self.cgpa2 = math.fsum(self.grade_pt2)
+        self.cgp_p = self.cgpa2/5
+
+
+
+		
+ob=Student()
+b=Display()
+b.grade_sys()
+b.grade_prac()
+b.grade_t()
+b.grade_p()
+b.crp_t()
+b.crp_p()
+b.cgpa_t()
+b.cgpa_p()
+b.printMarks()
+
+
+
+
+
+
+
