@@ -1,0 +1,39 @@
+
+# Simple Banking operations
+
+class bank:
+    cust_name = str(input("Enter your name: "))
+    acc_no = int(input("Enter your account number: "))
+    cur_bal = int(input("Enter your balance: "))
+
+    def deposit(self):
+        dep_amt = int(input("Enter the amount to be deposited: "))
+        self.bal1 = self.cur_bal + dep_amt
+        print("Successfully Deposited!!")
+        print("Current balance : ", self.bal1)
+        
+
+    def withdraw(self):
+        with_amt = int(input("Enter the amount to withdraw: "))
+
+        #Using condition if withdraw amount is more than the current balance
+        if with_amt > self.cur_bal:
+            print(" Your account does not have that much balance!!")
+            
+        else:
+            self.bal2 = self.cur_bal - with_amt
+            print("Successfully Withdrawn!!")
+            print("Current balance : ", self.bal2)
+            
+
+B=bank()
+
+# Using condition so that user can choose accordingly 
+a=int(input("Enter '1' if you want to deposit money OR \n '2' if you want to withdraw money: "))
+if(a == 1):
+    B.deposit()
+    
+elif(a == 2):
+    B.withdraw()
+        
+        
