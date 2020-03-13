@@ -1,8 +1,7 @@
 
 # STUDENT MARKSHEET
 import math
-class Student(object):
-    
+class Student(object):   
     def __init__(self):
             self.sname = str(input("Name: ".ljust(20)))
             self.class_ = str(input("Class: ".ljust(20)))
@@ -15,18 +14,15 @@ class AcceptMarks():
             self.pp = int(input("PP : "))
             self.oop = int(input("OOP : "))
             self.wp = int(input("WP : "))
- 
-            
+             
 class Result(AcceptMarks):
     def __init__(self):
             self.p_mark = []
             self.t_mark = []
-
-
             
     def accept_p(self):
-            print("Practical".center(108,'-'))
-            print("Enter marks out of 50".center(108,'-'))
+            print("Practical".center(108, '-'))
+            print("Enter marks out of 50".center(108, '-'))
             super(Result,self).__init__()
             self.it = int(input("IT: "))
            
@@ -38,8 +34,8 @@ class Result(AcceptMarks):
                 
     def accept_t(self):
             print("\n")
-            print("Theory".center(108,"-"))
-            print("Enter marks out of 80".center(108,'-'))
+            print("Theory".center(108, "-"))
+            print("Enter marks out of 80".center(108, '-'))
             super(Result,self).__init__()
             self.dm = int(input("DM : "))
             
@@ -49,18 +45,14 @@ class Result(AcceptMarks):
             self.t_mark.append(self.wp)
             self.t_mark.append(self.dm)
             
-    def calculate(self):
+    def calculate(self):          
+            self.pract_total = self.p_mark[0] + self.p_mark[1] + self.p_mark[2] + self.p_mark[3]
+            self.pract_avg = self.pract_total / 4
+            self.pract_perc = self.pract_total * 100 / 200
             
-            self.pract_total=self.p_mark[0]+self.p_mark[1]+self.p_mark[2]+self.p_mark[3]
-            self.pract_avg=self.pract_total/4
-            self.pract_perc=self.pract_total*100/200
-            
-            self.theory_total=self.t_mark[0]+self.t_mark[1]+self.t_mark[2]+self.t_mark[3]+self.t_mark[4]
-            self.theory_avg=self.theory_total/5
-            self.theory_perc=self.theory_total*100/500
-
-            
-    
+            self.theory_total = self.t_mark[0] + self.t_mark[1] + self.t_mark[2] + self.t_mark[3] + self.t_mark[4]
+            self.theory_avg = self.theory_total / 5
+            self.theory_perc = self.theory_total * 100 / 500
 		
 class Display(Result):
     def __init__(self):
@@ -70,21 +62,21 @@ class Display(Result):
             Result.calculate(self)
             
     def printMarks(self):
-            print("Result".center(108,"-"))
+            print("Result".center(108, "-"))
             print("Subject","".rjust(12),"Theory".ljust(8),"Grade".ljust(8),"GP".ljust(7),"CR".ljust(6),"Cgpa/Sgpa".ljust(10),"Practical".ljust(10),"Grade".ljust(8)," GP".ljust(5),"CR".ljust(5),"Cgpa/Sgpa")
-            lstSub = ["DBMS      ","PP        ",
-            "OOP       ","WP        ","DM/IT     "]
+            lstSub = ["DBMS      ", "PP        ",
+            "OOP       ", "WP        ", "DM/IT     "]
             
             for i in range(len(lstSub)):
                     print(lstSub[i],"".rjust(10),self.t_mark[i],"".rjust(6),self.grade_theory[i],"".rjust(4),self.grade_pt[i],"".rjust(4),self.crp[i],"".rjust(5),self.cgp_t,"".rjust(10),self.p_mark[i],"".rjust(5),self.grade_prac[i],"".rjust(3),self.grade_pt2[i],"".rjust(1),self.crp2[i],"".rjust(8),self.cgp_p,"".rjust(3))
 
-            print("".center(108,"-"))                  
-            print("Total     ","".rjust(14),self.theory_total,"".rjust(38),self.pract_total)
-            print("Average   ","".rjust(14),self.theory_avg,"".rjust(36),self.pract_avg)
-            print("Percent   ","".rjust(14),self.theory_perc,"".rjust(36),self.pract_perc)
+            print("".center(108, "-"))                  
+            print("Total     ","".rjust(14),self.theory_total,"".rjust(38), self.pract_total)
+            print("Average   ","".rjust(14),self.theory_avg,"".rjust(36), self.pract_avg)
+            print("Percent   ","".rjust(14),self.theory_perc,"".rjust(36), self.pract_perc)
 
-#Grade
-      
+    #Grade  
+    
     def grade_sys(self):
         self.grade_theory = []
         for i in self.t_mark:
@@ -117,7 +109,6 @@ class Display(Result):
             else:
                 self.grade_prac.append('F ')
                 
-    #Grade
     def grade_t(self):
         self.grade_pt = []
         for i in self.p_mark:
@@ -168,28 +159,28 @@ class Display(Result):
 
     def cgpa_t(self):
         self.cgpa = math.fsum(self.grade_pt)
-        self.cgp_t = self.cgpa/5
+        self.cgp_t = self.cgpa / 5
 
 
 
     def cgpa_p(self):
         self.cgpa2 = math.fsum(self.grade_pt2)
-        self.cgp_p = self.cgpa2/5
+        self.cgp_p = self.cgpa2 / 5
 
 
 
 		
-ob=Student()
-b=Display()
-b.grade_sys()
-b.grade_prac()
-b.grade_t()
-b.grade_p()
-b.crp_t()
-b.crp_p()
-b.cgpa_t()
-b.cgpa_p()
-b.printMarks()
+object1=Student()
+object2=Display()
+object2.grade_sys()
+object2.grade_prac()
+object2.grade_t()
+object2.grade_p()
+object2.crp_t()
+object2.crp_p()
+object2.cgpa_t()
+object2.cgpa_p()
+object2.printMarks()
 
 
 
