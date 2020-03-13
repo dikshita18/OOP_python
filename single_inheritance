@@ -1,4 +1,5 @@
 
+# Understanding single inheritance
 # Defining base class "Shape".
 class Shape:
 
