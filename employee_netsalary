@@ -1,0 +1,33 @@
+
+# Calculating Net Salary of the Employees
+class Employee:
+    
+    def __init__(self):
+        self.dept_name = str(input("ENTER DEPARTMENT NAME: "))
+        self.name = str(input("ENTER  YOUR NAME: "))
+        self.emp_id = int(input("ENTER YOUR EMPLOYEE ID NO: "))
+        self.basic_sal = int(input("ENTER YOUR BASIC SALARY: "))
+        
+    def calc_net_sal(self):
+        TA = 18 / 100 * self.basic_sal
+        DA = 70 / 100 * self.basic_sal
+        HRA = 25 / 100 * self.basic_sal
+        EPF = 10 / 100 * self.basic_sal
+        self.netsal = self.basic_sal + TA + DA + HRA - EPF
+       
+    def display(self):
+        print("Your department name is: ", self.dept_name)
+        print("Your name is: ", self.name)
+        print("Your employee ID no is: ", self.emp_id)        
+        print("Your basic salary is : ", self.basic_sal)
+        print("Your net salary is : ", self.netsal)
+
+    def __del__(self):
+        print("INSTANCE DESTROYED!!")
+         
+object1=Employee()
+object1.calc_net_sal()
+object1.display()
+object1.__del__()
+
+
